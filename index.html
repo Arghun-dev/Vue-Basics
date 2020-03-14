@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Vue Basics</title>
+</head>
+<body class="index">
+
+    <h1>Vue Basics</h1>
+    <div id='app'>
+        <h2>{{ title }}</h2>
+        <h2>{{ greet('morning') }}</h2>
+        <a :href='url'>Google</a>
+        <p :class='classes'>This is binding of classes</p>
+        <input type="text" :value='name'>
+        <h1>I earn {{wage}} dollars every hour</h1>
+        <button v-on:click='wage++'>Increase by 1</button>
+        <button v-on:click='wage--'>Decrease by 1</button>
+        <button v-on:click='increase(5)'>Increase By 5</button>
+        <button v-on:click='decrease(5)'>Decrease By 5</button>
+        <button v-on:dblclick='increase(2)'>doubleClick increase</button>
+        <button v-on:dblclick='decrease(2)'>doubleClick decrease</button>
+        <button @click='logEvent'>logEvent</button>
+        <div class="container" @mousemove='changeCoords'>{{coords.x}} / {{coords.y}}</div>
+        <p>My Name is {{ name }}</p>
+        <input type="text" @keyup='updateName'>
+        <input type="text" @keypress='updateName'>
+        <input type="text" v-model='name'>
+
+        <!-- Modifiers -->
+        <button @click.alt='logMessage'>alt-click</button>
+        <button @click.shift='logMessage'>shift-click</button>
+        <a href="http://www.google.com" @click.prevent='logMessage'>Google</a>
+
+        <!-- Conditional rendering -->
+        <p v-if='showName'>{{ name }}</p>
+        <p v-else-if='showAge'>{{ age }}</p>
+        <button @click='toggleName'>showName: {{ showName }}</button>
+        <button @click='toggleAge'>showAge: {{ showAge }}</button>
+
+        <!-- for loops -->
+        <ul>
+            <li v-for='color in colors'>{{color}}</li>
+        </ul>
+
+        <div v-for='(person, index) in persons'>
+            <p>{{index+1}} - Name: {{person.name}}</p>
+            <p>Age: {{person.age}}</p>
+            <p>Job: {{person.job}}</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
